@@ -1,20 +1,24 @@
 import { articleSeo } from "../content/seo";
 import { applySeo } from "../lib/seo";
 import { useEffect, useState } from "react";
-import { articleBySlug, sectionId, type Article, type Block, type Face } from "../content/articles";
+import { articleBySlug, sectionId, type Article, type Block, type Face, type TitleRun } from "../content/articles";
+import { newsArticleBySlug } from "../content/news";
 import { navigate } from "../lib/router";
 import { scrollPageTo } from "../lib/smoothScroll";
 import { PageHead } from "./AboutPage";
+import TaitronicsArt from "./TaitronicsArt";
 import { openWaitlist } from "./WaitlistDialog";
 import "./AboutPage.css";
 import "./ArticlePage.css";
 
-// A blog article (the template, Figma 44:4552), at /blog/<slug>: on the About
+// An article (the blog's template, Figma 44:4552), at /blog/<slug> — or, for a
+// news item, /news/<slug> (src/content/news.ts): on the About
 // page's column, the article's title as the page head (single letters in other
 // faces), its subtitle, author and date, the cover panel, the lead paragraph and
 // a rule, then the body. On wider screens a Contents list sits to the right,
 // built from the article's sections; it follows the reader down the page, marks
-// the section in view, and takes them to any section on a click.
+// the section in view, and takes them to any section on a click. An article
+// drawn from elsewhere (press coverage) closes on a link to the original.
 
 const FACE_CLASS: Record<Face, string> = {
   pp: "about-page__pp",
@@ -22,10 +26,16 @@ const FACE_CLASS: Record<Face, string> = {
   pg: "about-page__pg",
   fg: "article-page__fg",
   sg: "article-page__sg",
+  lq: "article-page__lq",
 };
 
-/** The slug in the address: /blog/<slug>. */
-const slugFromPath = () => decodeURIComponent(window.location.pathname.replace(/^\/blog\/?/, "").replace(/\/+$/, ""));
+type Section = NonNullable<Article["section"]>;
+
+/** Where the address points: /blog/<slug> or /news/<slug>. */
+const placeFromPath = (): { section: Section; slug: string } => {
+  const [, section, slug = ""] = window.location.pathname.replace(/\/+$/, "").match(/^\/(blog|news)\/?(.*)$/) ?? [];
+  return { section: section === "news" ? "news" : "blog", slug: decodeURIComponent(slug) };
+};
 
 /** The fixed bar's height plus a little air: where a section lands when jumped
  *  to (the announcement strip, the bar's 72px, and a gap). */
@@ -180,7 +190,7 @@ function Contents({ sections }: { sections: string[] }) {
 
 function ArticleView({ article }: { article: Article }) {
   const sections = article.body.filter((block): block is Extract<Block, { type: "h2" }> => block.type === "h2").map((block) => block.text);
-  const runs: [string, Face][] = article.titleRuns ?? [[article.title, "pp"]];
+  const runs: TitleRun[] = article.titleRuns ?? [[article.title, "pp"]];
 
   // Opened at a section's address (/blog/<slug>#section), go to it.
   useEffect(() => {
@@ -197,8 +207,12 @@ function ArticleView({ article }: { article: Article }) {
     <div className="article-page__layout">
       <article className="about-page__column article-page__article">
         <PageHead id="article-title">
-          {runs.map(([text, face], index) => (
-            <span key={index} className={FACE_CLASS[face]}>
+          {runs.map(([text, face, tweak], index) => (
+            <span
+              key={index}
+              className={FACE_CLASS[face]}
+              style={tweak && { fontSize: tweak.size && `${tweak.size}em`, letterSpacing: tweak.tracking && `${tweak.tracking}em` }}
+            >
               {text}
             </span>
           ))}
@@ -213,7 +227,13 @@ function ArticleView({ article }: { article: Article }) {
 
         {/* No cover yet: the placeholder — the lattice, faint, round the motif. */}
         <div className="article-page__cover">
-          {article.image ? <img src={article.image} alt="" style={{ objectPosition: article.imageFocus }} /> : <span className="article-page__cover-art" aria-hidden />}
+          {article.art === "taitronics" ? (
+            <TaitronicsArt />
+          ) : article.image ? (
+            <img src={article.image} alt="" style={{ objectPosition: article.imageFocus }} />
+          ) : (
+            <span className="article-page__cover-art" aria-hidden />
+          )}
         </div>
 
         <p className="article-page__lead">{article.lead}</p>
@@ -224,6 +244,17 @@ function ArticleView({ article }: { article: Article }) {
             <BlockView key={index} block={block} />
           ))}
         </div>
+
+        {article.reference && (
+          <p className="article-page__reference">
+            <a href={article.reference.href} target="_blank" rel="noopener noreferrer">
+              {article.reference.label}
+              <svg viewBox="0 0 12 12" aria-hidden>
+                <path d="M3 9 9 3M4 3h5v5" />
+              </svg>
+            </a>
+          </p>
+        )}
 
         <span className="article-page__end" aria-hidden />
       </article>
@@ -238,11 +269,11 @@ function ArticleView({ article }: { article: Article }) {
 }
 
 export default function ArticlePage() {
-  const [slug, setSlug] = useState(slugFromPath);
+  const [place, setPlace] = useState(placeFromPath);
 
   // Another article opened from this one (the page itself doesn't change).
   useEffect(() => {
-    const update = () => setSlug(slugFromPath());
+    const update = () => setPlace(placeFromPath());
     window.addEventListener("popstate", update);
     window.addEventListener("quanthive:navigate", update);
     return () => {
@@ -251,7 +282,8 @@ export default function ArticlePage() {
     };
   }, []);
 
-  const article = articleBySlug(slug);
+  const article = place.section === "news" ? newsArticleBySlug(place.slug) : articleBySlug(place.slug);
+  const listing = place.section === "news" ? { href: "/news", label: "See all news" } : { href: "/blog", label: "See all articles" };
 
   useEffect(() => {
     if (article) applySeo(articleSeo(article));
@@ -268,8 +300,8 @@ export default function ArticlePage() {
           </PageHead>
           <p className="article-page__subtitle">This article isn&apos;t here — it may have moved.</p>
           <p>
-            <a href="/blog" onClick={(event) => (event.preventDefault(), navigate("/blog"))}>
-              See all articles
+            <a href={listing.href} onClick={(event) => (event.preventDefault(), navigate(listing.href))}>
+              {listing.label}
             </a>
           </p>
         </div>
@@ -278,5 +310,5 @@ export default function ArticlePage() {
   );
 }
 
-/** A link to an article, for the Blog page. */
-export const articleHref = (article: Article) => `/blog/${article.slug}`;
+/** A link to an article, for the Blog and News pages. */
+export const articleHref = (article: Article) => `/${article.section ?? "blog"}/${article.slug}`;

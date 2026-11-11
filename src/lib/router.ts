@@ -8,7 +8,9 @@
 //   /careers  the Careers page
 //   /terms, /privacy, /license  the legal pages
 //   /blog     the Blog page
+//   /news     the News page
 //   /blog/<slug>  an article (src/content/articles.ts)
+//   /news/<slug>  a news item's article (src/content/news.ts), on the same template
 //   anything else an "under maintenance" note, until that page is built
 //
 // Moving between them never reloads: navigate() pushes the address and App.tsx
@@ -19,7 +21,7 @@
 // hosts already serve the app at any path (vercel.json, server.ts), so a refresh
 // on the new address works with nothing else to set up.
 
-export type Page = "landing" | "product" | "about" | "team" | "contact" | "careers" | "terms" | "privacy" | "license" | "blog" | "article" | "maintenance";
+export type Page = "landing" | "product" | "about" | "team" | "contact" | "careers" | "terms" | "privacy" | "license" | "blog" | "news" | "article" | "maintenance";
 
 export const PAGE_URL: Record<Page, string> = {
   landing: "/",
@@ -32,7 +34,8 @@ export const PAGE_URL: Record<Page, string> = {
   privacy: "/privacy",
   license: "/license",
   blog: "/blog",
-  article: "/blog", // an article lives at /blog/<slug> (src/content/articles.ts)
+  news: "/news",
+  article: "/blog", // an article lives at /blog/<slug> or /news/<slug>, never at /blog alone
   maintenance: "/maintenance", // any address with no page yet
 };
 
@@ -50,7 +53,7 @@ const trimPath = (path: string) => path.replace(/\/+$/, "") || "/";
 /** The page at a path, or null if it isn't one of the site's pages. */
 export function pageAt(pathname: string): Page | null {
   const path = trimPath(pathname);
-  if (/^\/blog\/[^/]+$/.test(path)) return "article";
+  if (/^\/(blog|news)\/[^/]+$/.test(path)) return "article";
   const page = (Object.keys(PAGE_URL) as Page[]).find((name) => name !== "article" && PAGE_URL[name] === path);
   if (page) return page;
   // Any other page-like address (not a file, not the API) has no page yet.

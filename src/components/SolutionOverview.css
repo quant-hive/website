@@ -71,7 +71,7 @@
   margin: 0;
   transform: translateX(-50%);
   color: #000;
-  font-family: var(--font-display, "PP Pangaia", Georgia, serif);
+  font-family: var(--font-display, "QH Display", Georgia, serif);
   font-size: 45px;
   font-weight: 500;
   line-height: 55px;
@@ -135,7 +135,7 @@
 .solution-overview__product-copy p,
 .solution-overview__card p {
   margin: 0;
-  font-family: var(--font-ui, "Inter", system-ui, sans-serif);
+  font-family: var(--font-ui, "QH UI", system-ui, sans-serif);
   font-weight: 500;
   letter-spacing: -0.02em;
 }
@@ -160,7 +160,7 @@
   border: 1px solid #9e9e9e;
   border-radius: 2px;
   color: #9e9e9e;
-  font-family: var(--font-ui, "Inter", system-ui, sans-serif);
+  font-family: var(--font-ui, "QH UI", system-ui, sans-serif);
   font-size: 12px;
   font-weight: 500;
   letter-spacing: -0.02em;

@@ -42,7 +42,7 @@
 .clk__hours,
 .clk__minlabels,
 .clk__brand {
-  font-family: "PT Serif", Georgia, serif;
+  font-family: "QH Serif", Georgia, serif;
   text-anchor: middle;
   dominant-baseline: central;
 }
@@ -65,7 +65,7 @@
 .clk__brand {
   font-size: 26px;
   letter-spacing: 6px;
-  font-family: var(--font-ui, "Inter", system-ui, sans-serif);
+  font-family: var(--font-ui, "QH UI", system-ui, sans-serif);
 }
 
 /* No reduced-motion rule on the hands: they are a readout of the actual time, not

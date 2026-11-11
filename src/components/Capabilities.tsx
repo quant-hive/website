@@ -226,7 +226,7 @@ function CitedAnswerArt() {
   );
 }
 
-type Face = "ghost" | "schibsted" | "bricolage" | "power" | "host";
+type Face = "initial" | "sans4" | "sans3" | "mark" | "sans";
 
 /** A run of the section title set in one face, with the frame's per-run tracking. */
 function F({
@@ -338,23 +338,23 @@ export default function Capabilities() {
             the second is Nata Sans Light. Runs below follow the frame's spans. */}
         <h2 id="capabilities-title">
           <span className="capabilities__title-line">
-            <F f="ghost">E</F>
-            <F f="schibsted">ve</F>
-            <F f="bricolage">r</F>
-            <F f="schibsted" track="open">y</F>
-            <F f="bricolage" track="open" large>t</F>
-            <F f="power">h</F>
-            <F f="host">i</F>
-            <F f="bricolage">n</F>
-            <F f="host">g </F>
-            <F f="schibsted">y</F>
-            <F f="schibsted" track="tight">o</F>
-            <F f="power">u</F>
-            <F f="bricolage">r r</F>
-            <F f="host">esearch</F>{" "}
-            <F f="bricolage">need</F>
-            <F f="schibsted">s</F>
-            <F f="bricolage">,</F>
+            <F f="initial">E</F>
+            <F f="sans4">ve</F>
+            <F f="sans3">r</F>
+            <F f="sans4" track="open">y</F>
+            <F f="sans3" track="open" large>t</F>
+            <F f="mark">h</F>
+            <F f="sans">i</F>
+            <F f="sans3">n</F>
+            <F f="sans">g </F>
+            <F f="sans4">y</F>
+            <F f="sans4" track="tight">o</F>
+            <F f="mark">u</F>
+            <F f="sans3">r r</F>
+            <F f="sans">esearch</F>{" "}
+            <F f="sans3">need</F>
+            <F f="sans4">s</F>
+            <F f="sans3">,</F>
           </span>{" "}
           <span className="capabilities__title-line capabilities__title-line--light">in one place</span>
         </h2>

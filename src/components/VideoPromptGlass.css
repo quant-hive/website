@@ -73,7 +73,7 @@
 
 .video-prompt__text {
   color: #ffffff;
-  font-family: var(--font-ui, "Inter", system-ui, sans-serif);
+  font-family: var(--font-ui, "QH UI", system-ui, sans-serif);
   font-size: var(--text-size);
   font-weight: 500;
   letter-spacing: -0.01em;
@@ -254,7 +254,7 @@
   border-radius: 50%;
   background: #d39532; /* the shot's gold */
   color: #2b1d06;
-  font-family: "Host Grotesk", var(--font-ui, system-ui), sans-serif;
+  font-family: "QH Sans", var(--font-ui, system-ui), sans-serif;
   font-size: calc(var(--u) * 11);
   font-weight: 500;
   letter-spacing: -0.03em;
@@ -273,7 +273,7 @@
   align-items: center;
   gap: calc(var(--u) * 6.07);
   color: #ffffff;
-  font-family: "Bricolage Grotesque", var(--font-ui, system-ui), sans-serif;
+  font-family: "QH Sans 3", var(--font-ui, system-ui), sans-serif;
   font-size: calc(var(--u) * 8);
   font-variation-settings: "opsz" 14;
   font-weight: 500;
@@ -308,7 +308,7 @@
   margin: 0;
   padding: calc(var(--ua) * 11) calc(var(--ua) * 10);
   color: #ffffff;
-  font-family: "Host Grotesk", var(--font-ui, system-ui), sans-serif;
+  font-family: "QH Sans", var(--font-ui, system-ui), sans-serif;
   font-size: calc(var(--ua) * 8.5);
   font-weight: 400;
   letter-spacing: -0.03em;
@@ -326,7 +326,7 @@
 .video-answer__scroll {
   position: relative;
   color: #ffffff;
-  font-family: "Host Grotesk", var(--font-ui, system-ui), sans-serif;
+  font-family: "QH Sans", var(--font-ui, system-ui), sans-serif;
 }
 
 /* The window's content scrolls up as a whole (--feed-scroll) once the reply's
@@ -477,7 +477,7 @@
 
 .va-chart__svg text {
   fill: rgba(255, 255, 255, 0.72);
-  font-family: "Host Grotesk", var(--font-ui, system-ui), sans-serif;
+  font-family: "QH Sans", var(--font-ui, system-ui), sans-serif;
   font-size: 5.4px;
 }
 
@@ -650,7 +650,7 @@
   align-items: center;
   gap: calc(var(--u) * 5);
   color: #c2c0b6;
-  font-family: "PT Serif", Georgia, serif;
+  font-family: "QH Serif", Georgia, serif;
   font-size: calc(var(--u) * 12.5);
   letter-spacing: -0.01em;
   line-height: 1;
@@ -696,7 +696,7 @@
   border-radius: calc(var(--u) * 9);
   background: #141413;
   color: #faf9f5;
-  font-family: "Host Grotesk", var(--font-ui, system-ui), sans-serif;
+  font-family: "QH Sans", var(--font-ui, system-ui), sans-serif;
   font-size: calc(var(--u) * 8.9);
   letter-spacing: -0.02em;
   line-height: 1.3;
@@ -715,7 +715,7 @@
   align-items: center;
   gap: calc(var(--u) * 5);
   color: #b7b5a9;
-  font-family: "Host Grotesk", var(--font-ui, system-ui), sans-serif;
+  font-family: "QH Sans", var(--font-ui, system-ui), sans-serif;
   font-size: calc(var(--u) * 8);
   letter-spacing: -0.01em;
   white-space: nowrap;
@@ -748,7 +748,7 @@
   left: var(--c-x);
   width: var(--c-w);
   color: #e8e6dc;
-  font-family: "PT Serif", Georgia, serif;
+  font-family: "QH Serif", Georgia, serif;
   font-size: calc(var(--ua) * 8.2);
   line-height: 1.55;
 }
@@ -774,7 +774,7 @@
 .claude-chart figcaption {
   margin-bottom: calc(var(--ua) * 5);
   color: #a3a196;
-  font-family: "Host Grotesk", var(--font-ui, system-ui), sans-serif;
+  font-family: "QH Sans", var(--font-ui, system-ui), sans-serif;
   font-size: calc(var(--ua) * 6.4);
 }
 
@@ -788,7 +788,7 @@
 
 .claude-chart text {
   fill: #c2c0b6;
-  font-family: "Host Grotesk", var(--font-ui, system-ui), sans-serif;
+  font-family: "QH Sans", var(--font-ui, system-ui), sans-serif;
   font-size: 7px;
 }
 

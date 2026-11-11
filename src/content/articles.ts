@@ -5,7 +5,11 @@
 // To publish an article: add an entry to ARTICLES (newest first). Its `h2`
 // blocks become the sections in the Contents navigator automatically.
 
-export type Face = "pp" | "bg" | "fg" | "sg" | "pg";
+export type Face = "pp" | "bg" | "fg" | "sg" | "pg" | "lq";
+
+/** A run of the title in one face; optionally a touch larger or tighter than
+ *  the rest, in ems of the title (`size` 1.04 is 52 in a 50 title). */
+export type TitleRun = [string, Face] | [string, Face, { size?: number; tracking?: number }];
 
 export type Block =
   | { type: "p"; text: string }
@@ -19,18 +23,25 @@ export type Block =
   | { type: "refs"; items: string[] };
 
 export type Article = {
+  /** Where it's published: the blog (/blog/<slug>, the default) or the News page
+   *  (/news/<slug>, src/content/news.ts). */
+  section?: "blog" | "news";
   slug: string;
   title: string;
   /** The title as the page head sets it: runs of text, each in one of the faces
    *  (pp PP Pangaia, bg Bricolage Grotesque, fg Familjen Grotesk, sg Schibsted
-   *  Grotesk, pg Power Grotesk). Omit to set it all in PP Pangaia. */
-  titleRuns?: [string, Face][];
+   *  Grotesk, pg Power Grotesk; lq the Q of QuantHive's logo, drawn from the
+   *  logo itself — give it a "Q"). Omit to set it all in PP Pangaia. */
+  titleRuns?: TitleRun[];
   subtitle: string;
   category: string;
   author: string;
   date: string;
   /** Cover image for the article's panel and the blog's cards (optional). */
   image?: string;
+  /** Art drawn in code for the cover instead (the image still stands for the
+   *  article in search results): the TAITRONICS item's (TaitronicsArt.tsx). */
+  art?: "taitronics";
   /** The picture link previews show (X, LinkedIn, WhatsApp, …): a 1200 × 630
    *  JPEG, which every platform reads. Defaults to the site's own. */
   shareImage?: string;
@@ -40,6 +51,10 @@ export type Article = {
   /** The opening paragraph, under the cover and above the rule. */
   lead: string;
   body: Block[];
+  /** The original this one is drawn from (press coverage, say): a link under
+   *  the body, and — naming its `source` — the announcement bar's while the
+   *  article is open (AnnouncementBar.tsx). */
+  reference?: { label: string; href: string; source: string };
 };
 
 export const ARTICLES: Article[] = [

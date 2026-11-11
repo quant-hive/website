@@ -93,7 +93,7 @@
 
 .prob__title-text {
   display: block;
-  font-family: var(--font-display, "PP Pangaia", "Fraunces", Georgia, serif);
+  font-family: var(--font-display, "QH Display", "QH Display 2", Georgia, serif);
   /* 45px at 1920 wide. */
   font-size: clamp(26px, 2.344vw, 52px);
   letter-spacing: -0.02em;
@@ -125,7 +125,7 @@
 
 .prob__sub {
   margin: 0;
-  font-family: var(--font-ui, "Inter", system-ui, sans-serif);
+  font-family: var(--font-ui, "QH UI", system-ui, sans-serif);
   /* 24px at 1920, tracking 4.8px = 0.2em. Figma sets Nata Sans, which this project
      does not ship; Inter is the closest of the loaded faces and matches the hero's
      caption treatment. */
@@ -293,7 +293,7 @@
 
 .prob__foot-title {
   margin: 0;
-  font-family: var(--font-display, "PP Pangaia", "Fraunces", Georgia, serif);
+  font-family: var(--font-display, "QH Display", "QH Display 2", Georgia, serif);
   /* The frame's box is 45 units, the same as "The Problem" at the top of the
      section. A step under that instead: set to match exactly it competed with the
      heading rather than answering it. */
@@ -318,7 +318,7 @@
    size than the sentence case did, not the same one. */
 .prob__foot-caption {
   margin: clamp(5px, 0.65vh, 10px) 0 0;
-  font-family: var(--font-ui, "Inter", system-ui, sans-serif);
+  font-family: var(--font-ui, "QH UI", system-ui, sans-serif);
   font-size: clamp(9.5px, 0.833vw, 18px);
   font-weight: 500;
   letter-spacing: 0.16em;

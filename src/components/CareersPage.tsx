@@ -1,5 +1,6 @@
-import { useEffect, useId, useLayoutEffect, useRef, useState, type FormEvent } from "react";
+import { useEffect, useId, useRef, useState, type FormEvent } from "react";
 import { POSITIONS, type Position } from "../content/careers";
+import { useEvenLines } from "../lib/useEvenLines";
 import { PageHead } from "./AboutPage";
 import "./AboutPage.css";
 import "./CareersPage.css";
@@ -72,74 +73,6 @@ export default function CareersPage() {
       </article>
     </main>
   );
-}
-
-/** Keeps the two notes to the same number of lines: whichever runs to fewer is
- *  narrowed — as little as it takes — until it wraps to as many as the other.
- *  Then sets the hairline halfway between where the first note's text actually
- *  ends and the second's begins (a ragged edge leaves its box short).
- *  Rechecked whenever the notes change size (the window, the fonts loading). */
-function useEvenLines(ref: React.RefObject<HTMLDivElement | null>) {
-  useLayoutEffect(() => {
-    const box = ref.current;
-    if (!box) return;
-    const [first, second] = box.querySelectorAll("p");
-    if (!first || !second) return;
-    const notes = [first, second];
-    const divider = box.querySelector<HTMLElement>(".careers-page__divider");
-    const lines = (p: HTMLElement) =>
-      Math.round(p.getBoundingClientRect().height / parseFloat(getComputedStyle(p).lineHeight));
-    let width = 0;
-    // The hairline, centred in the gap the text leaves.
-    const centre = () => {
-      if (!divider) return;
-      divider.style.translate = "";
-      const range = document.createRange();
-      range.selectNodeContents(first);
-      const inkEnd = Math.max(...[...range.getClientRects()].map((r) => r.right));
-      range.selectNodeContents(second);
-      const inkStart = Math.min(...[...range.getClientRects()].map((r) => r.left));
-      const line = divider.getBoundingClientRect();
-      const shift = (inkEnd + inkStart) / 2 - (line.left + line.width / 2);
-      if (Number.isFinite(shift)) divider.style.translate = `${Math.round(shift * 2) / 2}px 0`;
-    };
-    const even = () => {
-      // Side by side only; stacked on a phone, each keeps its own lines.
-      if (getComputedStyle(box).gridTemplateColumns.split(" ").length < 3) {
-        notes.forEach((p) => (p.style.maxWidth = ""));
-        if (divider) divider.style.translate = "";
-        return;
-      }
-      notes.forEach((p) => (p.style.maxWidth = ""));
-      const a = lines(first);
-      const b = lines(second);
-      if (a === b) return centre();
-      const short = a < b ? first : second;
-      const target = Math.max(a, b);
-      // The widest width at which the shorter note wraps to the other's lines.
-      let hi = short.getBoundingClientRect().width;
-      let lo = hi * 0.4;
-      for (let i = 0; i < 12; i++) {
-        const mid = (lo + hi) / 2;
-        short.style.maxWidth = `${mid}px`;
-        if (lines(short) >= target) lo = mid;
-        else hi = mid;
-      }
-      short.style.maxWidth = `${Math.floor(lo)}px`;
-      centre();
-    };
-    even();
-    const observer = new ResizeObserver(() => {
-      const w = box.getBoundingClientRect().width;
-      if (w !== width) {
-        width = w;
-        even();
-      }
-    });
-    observer.observe(box);
-    document.fonts?.ready.then(even);
-    return () => observer.disconnect();
-  }, [ref]);
 }
 
 function PositionRow({ position, open, onToggle }: { position: Position; open: boolean; onToggle: () => void }) {

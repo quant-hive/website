@@ -20,7 +20,7 @@
   padding: clamp(64px, 7vw, 128px) var(--about-gutter) clamp(56px, 6vw, 112px);
   background: #ffffff;
   color: #151515;
-  font-family: var(--font-ui, "Inter", system-ui, sans-serif);
+  font-family: var(--font-ui, "QH UI", system-ui, sans-serif);
 }
 
 /* ---------- Heading ---------- */
@@ -31,7 +31,7 @@
 
 .about__header h2 {
   margin: 0;
-  font-family: "Nata Sans", var(--font-ui, "Inter", system-ui, sans-serif);
+  font-family: "QH Text", var(--font-ui, "QH UI", system-ui, sans-serif);
   font-size: max(24px, 1.797vw); /* = the section above (Capabilities.css) */
   font-weight: 400;
   letter-spacing: -0.03em; /* the frame's -1.14px on 38px */
@@ -48,12 +48,12 @@
 }
 
 .about__amp {
-  font-family: "Host Grotesk", sans-serif;
+  font-family: "QH Sans", sans-serif;
   font-weight: 300;
 }
 
 /* The one face this heading adds to the set in Capabilities.css. */
-.cap-face--hanken { font-family: "Hanken Grotesk", sans-serif; }
+.cap-face--sans2 { font-family: "QH Sans 2", sans-serif; }
 /* The frame's -0.48px on 38px, used on the opening letters. */
 .cap-face[data-track="soft"] { letter-spacing: -0.0126em; }
 
@@ -119,7 +119,7 @@
 
 .about__blog-label {
   position: relative;
-  font-family: "PP Pangaia", var(--font-display, serif);
+  font-family: "QH Display", var(--font-display, serif);
   font-size: min(16cqw, 34cqh);
   font-weight: 500;
   letter-spacing: -0.02em;
@@ -324,7 +324,7 @@
 
 .video-download__percent {
   color: #ffffff;
-  font-family: var(--font-ui, "Inter", system-ui, sans-serif);
+  font-family: var(--font-ui, "QH UI", system-ui, sans-serif);
   font-size: max(9px, 2.3cqmin);
   font-variant-numeric: tabular-nums;
   font-weight: 500;

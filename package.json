@@ -8,7 +8,7 @@
     "start": "bun server.ts",
     "typecheck": "tsc --noEmit",
     "render-video": "bun scripts/render-video.ts",
-    "build": "bun build ./index.html --outdir=dist --minify --public-path=/ && cp -r src/assets/icons dist/icons && cp -r src/assets/images dist/images && cp -r src/assets/videos dist/videos && bun scripts/seo.ts"
+    "build": "bun build ./index.html --outdir=dist --minify --public-path=/ && cp -r src/assets/icons dist/icons && cp -r src/assets/images dist/images && cp -r src/assets/videos dist/videos && cp -r src/assets/fonts/web dist/fonts &&bun scripts/seo.ts"
   },
   "devDependencies": {
     "@types/bun": "latest",

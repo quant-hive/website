@@ -87,9 +87,9 @@
 
 /* The faces the frames mix, a letter or two at a time. */
 .about-page__pg { font-family: var(--font-wordmark); font-weight: 400; }
-.about-page__pp { font-family: "PP Pangaia", var(--font-display, serif); font-weight: 500; }
+.about-page__pp { font-family: "QH Display", var(--font-display, serif); font-weight: 500; }
 .about-page__bg {
-  font-family: "Bricolage Grotesque", var(--font-ui);
+  font-family: "QH Sans 3", var(--font-ui);
   font-weight: 500;
   font-variation-settings: "opsz" 14, "wdth" 100;
 }
@@ -113,7 +113,7 @@
 
 .about-page__copy p {
   margin: 0;
-  font-family: "Nata Sans", var(--font-ui, "Inter", system-ui, sans-serif);
+  font-family: "QH Text", var(--font-ui, "QH UI", system-ui, sans-serif);
   font-size: clamp(17px, 1.3vw, 25px);
   font-weight: 400;
   letter-spacing: -0.05em;
@@ -157,7 +157,7 @@
 
 .about-page__section-title {
   margin: 0 0 clamp(14px, 1.2vw, 22px);
-  font-family: "PP Pangaia", var(--font-display, serif);
+  font-family: "QH Display", var(--font-display, serif);
   font-size: clamp(24px, 1.75vw, 34px);
   font-weight: 500;
   letter-spacing: -0.02em;
@@ -188,7 +188,7 @@
 
 .about-page__leader-text {
   margin-top: clamp(14px, 1.1vw, 20px);
-  font-family: "Nata Sans", var(--font-ui, "Inter", system-ui, sans-serif);
+  font-family: "QH Text", var(--font-ui, "QH UI", system-ui, sans-serif);
 }
 
 .about-page__leader-name,
@@ -359,7 +359,7 @@
 .about-page__lockup--er span {
   color: #6a6a6a; /* greys to the same weight as the other wordmarks */
   transition: color 300ms ease;
-  font-family: "Bebas Neue", var(--font-ui, sans-serif);
+  font-family: "QH Condensed", var(--font-ui, sans-serif);
   font-size: calc(var(--w) * 13cqw);
   line-height: 1;
   white-space: nowrap;
@@ -377,7 +377,7 @@
 
 .about-page__lockup--nv span {
   color: #111111;
-  font-family: "Host Grotesk", var(--font-ui, sans-serif);
+  font-family: "QH Sans", var(--font-ui, sans-serif);
   font-size: calc(var(--w) * 8.6cqw);
   letter-spacing: 0.06em;
   line-height: 1;
@@ -399,7 +399,7 @@
   max-width: 34em;
   margin: 0;
   color: #3a3a3a;
-  font-family: "Nata Sans", var(--font-ui, sans-serif);
+  font-family: "QH Text", var(--font-ui, sans-serif);
   font-size: clamp(15px, 0.94vw, 18px);
   font-weight: 500;
   letter-spacing: -0.03em;
@@ -430,7 +430,7 @@
   gap: 7px;
   padding-bottom: 4px;
   border-bottom: 1px dotted #ffffff;
-  font-family: "Nata Sans", var(--font-ui, sans-serif);
+  font-family: "QH Text", var(--font-ui, sans-serif);
   font-size: clamp(13px, 0.73vw, 14.5px);
   font-weight: 500;
   letter-spacing: -0.01em;

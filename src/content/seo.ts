@@ -8,6 +8,7 @@
 // search with; nothing here appears on the pages themselves.
 
 import { ARTICLES, type Article } from "./articles";
+import { NEWS_ARTICLES } from "./news";
 import { POSITIONS } from "./careers";
 
 export const SITE = "https://quanthive.in";
@@ -71,7 +72,7 @@ export const ORGANIZATION = {
     {
       "@type": "Person",
       name: "Harkishan Singh Baniya",
-      jobTitle: "Founder & CEO",
+      jobTitle: "Co-Founder & CEO",
       sameAs: ["https://www.linkedin.com/in/harkishan/"],
     },
     {
@@ -202,6 +203,15 @@ export const PAGES: PageSeo[] = [
     priority: 0.8,
   },
   {
+    path: "/news",
+    title: "News | QuantHive",
+    description:
+      "The latest from QuantHive: milestones, collaborations, events and product launches in AI, quantitative finance and financial technology.",
+    jsonLd: [breadcrumbs([["QuantHive", "/"], ["News", "/news"]])],
+    changefreq: "weekly",
+    priority: 0.7,
+  },
+  {
     path: "/terms",
     title: "Terms & Conditions | QuantHive",
     description: "The terms that govern use of QuantHive's website, products, APIs and services.",
@@ -226,7 +236,8 @@ export const PAGES: PageSeo[] = [
 
 /** "December 2025" → "2025-12-01", for structured data. */
 function isoDate(date: string) {
-  const parsed = new Date(`1 ${date}`);
+  // "December 2025" (the 1st) or "23 October 2026".
+  const parsed = new Date(/^\d/.test(date) ? date : `1 ${date}`);
   return Number.isNaN(parsed.getTime()) ? undefined : parsed.toISOString().slice(0, 10);
 }
 
@@ -238,9 +249,11 @@ function articleDescription(article: Article) {
   return `${text.slice(0, 155).replace(/\s+\S*$/, "")}…`;
 }
 
-/** A blog article's page. */
+/** An article's page: a blog post, or a news item's (press coverage, its
+ *  publisher the author). */
 export function articleSeo(article: Article): PageSeo {
-  const path = `/blog/${article.slug}`;
+  const news = article.section === "news";
+  const path = `/${news ? "news" : "blog"}/${article.slug}`;
   const published = isoDate(article.date);
   const description = articleDescription(article);
   return {
@@ -254,23 +267,24 @@ export function articleSeo(article: Article): PageSeo {
     jsonLd: [
       {
         "@context": "https://schema.org",
-        "@type": "BlogPosting",
+        "@type": news ? "NewsArticle" : "BlogPosting",
         headline: article.title,
         description,
         articleSection: article.category,
-        author: { "@type": "Person", name: article.author },
+        author: { "@type": news ? "Organization" : "Person", name: article.author },
         publisher: { "@id": `${SITE}/#organization` },
         ...(published ? { datePublished: published } : {}),
+        ...(article.reference ? { isBasedOn: article.reference.href } : {}),
         mainEntityOfPage: `${SITE}${path}`,
         image: article.shareImage ? `${SITE}${article.shareImage}` : article.image ? `${SITE}${article.image}` : OG_IMAGE,
       },
-      breadcrumbs([["QuantHive", "/"], ["Blog", "/blog"], [article.title, path]]),
+      breadcrumbs([["QuantHive", "/"], news ? ["News", "/news"] : ["Blog", "/blog"], [article.title, path]]),
     ],
   };
 }
 
 /** Every page with an address of its own: for the build and the sitemap. */
-export const ALL_PAGES: PageSeo[] = [...PAGES, ...ARTICLES.map(articleSeo)];
+export const ALL_PAGES: PageSeo[] = [...PAGES, ...ARTICLES.map(articleSeo), ...NEWS_ARTICLES.map(articleSeo)];
 
 /** The under-maintenance page: not for listing. */
 export const MAINTENANCE_SEO: PageSeo = {
