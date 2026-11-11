@@ -30,9 +30,9 @@
   --accent-swatch: linear-gradient(90deg, #1c1c1c 0 50%, #f1f1f1 50% 100%);
 
   /* ---- Typography ---- */
-  --font-wordmark: "Power Grotesk", "Space Grotesk", sans-serif;
-  --font-display: "PP Pangaia", "Fraunces", Georgia, serif;
-  --font-ui: "Inter", system-ui, sans-serif;
+  --font-wordmark: "QH Mark", "QH Mark 2", sans-serif;
+  --font-display: "QH Display", "QH Display 2", Georgia, serif;
+  --font-ui: "QH UI", system-ui, sans-serif;
 
   /* ---- Canvas geometry (exact Figma artboard, node 994:470) ---- */
   --canvas-w: 1460px;

@@ -50,7 +50,7 @@
 .careers-page__notes p {
   margin: 0;
   color: var(--grey);
-  font-family: "Nata Sans", var(--font-ui, sans-serif);
+  font-family: "QH Text", var(--font-ui, sans-serif);
   font-size: clamp(14px, 0.81vw, 15px); /* larger and the notes run to a fourth line */
   font-weight: 500;
   letter-spacing: -0.05em;
@@ -77,7 +77,7 @@
 
 .careers-page__heading {
   margin: clamp(32px, 2.7vw, 52px) 0 0;
-  font-family: "Nata Sans", var(--font-ui, sans-serif);
+  font-family: "QH Text", var(--font-ui, sans-serif);
   font-size: clamp(19px, 1.15vw, 23px);
   font-weight: 500;
   letter-spacing: -0.05em;
@@ -98,7 +98,7 @@
   row-gap: clamp(10px, 0.57vw, 13px);
   padding: var(--cell-x) 0;
   border-top: 1px solid var(--row-rule);
-  font-family: "Nata Sans", var(--font-ui, sans-serif);
+  font-family: "QH Text", var(--font-ui, sans-serif);
   font-weight: 500;
 }
 
@@ -199,7 +199,7 @@
   /* The frame's lattice: a 21px tile cut from it, faint grey on black. */
   background: url("../assets/images/careers-bar-pattern.png") 0 0 / 21px 21px repeat #000000;
   color: #ffffff;
-  font-family: "Nata Sans", var(--font-ui, sans-serif);
+  font-family: "QH Text", var(--font-ui, sans-serif);
   font-weight: 500;
 }
 

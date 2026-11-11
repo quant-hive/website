@@ -3,9 +3,8 @@ import { scrollPageTo } from "../lib/smoothScroll";
 import "./Footer.css";
 
 // Every link opens something: the site's own pages (App.tsx changes page in
-// place), or — for pages not built yet — the "under maintenance" note. The Certified column is a list, not links — there are no
-// certificate pages to open.
-const FOOTER_COLUMNS: { title: string; links: [string, string | null][] }[] = [
+// place), or — for pages not built yet — the "under maintenance" note.
+const FOOTER_COLUMNS: { title: string; links: [string, string][] }[] = [
   {
     title: "Platform",
     links: [
@@ -25,7 +24,7 @@ const FOOTER_COLUMNS: { title: string; links: [string, string | null][] }[] = [
       ["About", "/about"],
       ["Team", "/team"],
       ["Careers", "/careers"],
-      ["Newsroom", "/newsroom"],
+      ["Newsroom", "/news"],
     ],
   },
   {
@@ -34,20 +33,14 @@ const FOOTER_COLUMNS: { title: string; links: [string, string | null][] }[] = [
       ["Blog", "/blog"],
       ["Reports", "/reports"],
       ["Press Kit", "/press"],
-      ["License", "/license"],
-      ["Privacy Policy", "/privacy"],
-      ["Terms & Conditions", "/terms"],
     ],
   },
   {
-    title: "Certified",
+    title: "Legal",
     links: [
-      ["SOC 2 Type II", null],
-      ["ISO 27001", null],
-      ["ISO 42001", null],
-      ["CCPA", null],
-      ["GDPR", null],
-      ["EU AI Act", null],
+      ["License", "/license"],
+      ["Privacy Policy", "/privacy"],
+      ["Terms & Conditions", "/terms"],
     ],
   },
 ];
@@ -131,13 +124,9 @@ export default function Footer() {
                   <ul>
                     {column.links.map(([label, href]) => (
                       <li key={label}>
-                        {href ? (
-                          <a href={href} {...linkProps(href)}>
-                            {label}
-                          </a>
-                        ) : (
-                          <span className="site-footer__item">{label}</span>
-                        )}
+                        <a href={href} {...linkProps(href)}>
+                          {label}
+                        </a>
                       </li>
                     ))}
                   </ul>

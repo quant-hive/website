@@ -14,7 +14,7 @@ import "./AboutPage.css";
 const LEADERS = [
   {
     name: "Harkishan Singh Baniya",
-    role: "Founder & CEO",
+    role: "Co-Founder & CEO",
     bio: "Has built open-source quantitative finance tools and consulted for high-frequency trading firms, and now leads QuantHive's strategy and product, shaping how its research reaches investors.",
     linkedin: "https://www.linkedin.com/in/harkishan/",
     photo: "/images/team/harkishan.jpg",
@@ -48,7 +48,7 @@ function IncubationCellSeal() {
   return (
     <svg viewBox="0 0 126 126" aria-hidden>
       <circle cx="63" cy="63" r="61" fill="#ffffff" stroke="#e23b45" strokeWidth="2" />
-      <g fontFamily="'Host Grotesk', 'Inter', sans-serif" textAnchor="middle">
+      <g fontFamily="'QH Sans', 'QH UI', sans-serif" textAnchor="middle">
         <text x="63" y="48" fontSize="15" fill="#2b2b2b" letterSpacing="1">IITM</text>
         <text x="63" y="70" fontSize="13" fill="#6f6f6f" letterSpacing="0.6">
           <tspan fill="#c43a3a" fontSize="17">I</tspan>NCUBATION
@@ -218,13 +218,16 @@ export default function AboutPage() {
 
         <section className="about-page__partners" aria-labelledby="about-partners-title">
           <h2 id="about-partners-title" className="about-page__partners-title">
-            <span className="about-page__pp">Pa</span>
-            <span className="about-page__bg">r</span>
-            <span className="about-page__pg">t</span>
-            <span className="about-page__bg">n</span>
-            <span className="about-page__pp">e</span>
-            <span className="about-page__bg">r</span>
-            <span className="about-page__pp">s</span>
+            {/* One box, so the letters share a baseline instead of each being centred by its face's height. */}
+            <span>
+              <span className="about-page__pp">Pa</span>
+              <span className="about-page__bg">r</span>
+              <span className="about-page__pg">t</span>
+              <span className="about-page__bg">n</span>
+              <span className="about-page__pp">e</span>
+              <span className="about-page__bg">r</span>
+              <span className="about-page__pp">s</span>
+            </span>
           </h2>
           <ul className="about-page__logos">
             {PARTNERS.map((partner) => (

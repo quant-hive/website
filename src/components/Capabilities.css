@@ -25,7 +25,7 @@
   overflow: hidden;
   background: #ffffff; /* the page ground, so the hero's fade lands on it */
   color: var(--cap-ink);
-  font-family: var(--font-ui, "Inter", system-ui, sans-serif);
+  font-family: var(--font-ui, "QH UI", system-ui, sans-serif);
 }
 
 /* ---------- Heading ---------- */
@@ -41,7 +41,7 @@
 
 .capabilities__header h2 {
   margin: 0;
-  font-family: "Nata Sans", var(--font-ui, "Inter", system-ui, sans-serif);
+  font-family: "QH Text", var(--font-ui, "QH UI", system-ui, sans-serif);
   font-size: max(24px, 1.797vw);
   font-weight: 400;
   letter-spacing: -0.03em; /* the frame's -1.14px on 38px */
@@ -59,14 +59,14 @@
 }
 
 /* The faces the frame mixes letter by letter. */
-.cap-face--ghost { font-family: "TWK Ghost", serif; }
-.cap-face--schibsted { font-family: "Schibsted Grotesk", sans-serif; }
-.cap-face--bricolage {
-  font-family: "Bricolage Grotesque", sans-serif;
+.cap-face--initial { font-family: "QH Initial", serif; }
+.cap-face--sans4 { font-family: "QH Sans 4", sans-serif; }
+.cap-face--sans3 {
+  font-family: "QH Sans 3", sans-serif;
   font-variation-settings: "opsz" 14, "wdth" 100;
 }
-.cap-face--power { font-family: var(--font-wordmark); }
-.cap-face--host { font-family: "Host Grotesk", sans-serif; }
+.cap-face--mark { font-family: var(--font-wordmark); }
+.cap-face--sans { font-family: "QH Sans", sans-serif; }
 
 .cap-face[data-track="open"] { letter-spacing: 0.01em; }
 .cap-face[data-track="tight"] { letter-spacing: -0.01em; }
@@ -207,7 +207,7 @@
 .capabilities__title {
   margin: 0;
   color: #fff;
-  font-family: "Nata Sans", var(--font-ui, "Inter", system-ui, sans-serif);
+  font-family: "QH Text", var(--font-ui, "QH UI", system-ui, sans-serif);
   font-size: 6.9cqw;
   font-weight: 600;
   letter-spacing: -0.01em;

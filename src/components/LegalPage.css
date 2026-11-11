@@ -19,8 +19,8 @@
   white-space: normal; /* "Terms & Conditions" wraps on a phone */
 }
 
-.legal-page__fg { font-family: "Familjen Grotesk", var(--font-ui, sans-serif); font-weight: 500; }
-.legal-page__sg { font-family: "Space Grotesk", var(--font-ui, sans-serif); font-weight: 500; }
+.legal-page__fg { font-family: "QH Sans 5", var(--font-ui, sans-serif); font-weight: 500; }
+.legal-page__sg { font-family: "QH Mark 2", var(--font-ui, sans-serif); font-weight: 500; }
 
 .legal-page a {
   color: inherit;
@@ -50,7 +50,7 @@
 
 .legal-page__details dt {
   color: #b5b5b5;
-  font-family: "Nata Sans", var(--font-ui, sans-serif);
+  font-family: "QH Text", var(--font-ui, sans-serif);
   font-size: 10px;
   letter-spacing: 0.2em;
   line-height: 22px;
@@ -60,7 +60,7 @@
 .legal-page__details dd {
   margin: 2px 0 0;
   color: #3a3a3a;
-  font-family: "Nata Sans", var(--font-ui, sans-serif);
+  font-family: "QH Text", var(--font-ui, sans-serif);
   font-size: clamp(14px, 0.8vw, 15.5px);
   font-weight: 500;
   letter-spacing: -0.02em;
@@ -75,7 +75,7 @@
 
 .legal-page__section {
   margin-top: clamp(32px, 2.4vw, 46px);
-  font-family: "Nata Sans", var(--font-ui, sans-serif);
+  font-family: "QH Text", var(--font-ui, sans-serif);
   font-size: clamp(15px, 0.86vw, 16.5px);
   font-weight: 500;
   letter-spacing: -0.01em;
@@ -88,7 +88,7 @@
 
 .legal-page__section h2 {
   margin: 0;
-  font-family: "Nata Sans", var(--font-ui, sans-serif);
+  font-family: "QH Text", var(--font-ui, sans-serif);
   font-size: clamp(19px, 1.15vw, 22px);
   font-weight: 500;
   letter-spacing: -0.02em;
@@ -125,7 +125,7 @@
 .legal-page__updated {
   margin: clamp(32px, 2.4vw, 46px) 0 0;
   color: var(--muted);
-  font-family: "Nata Sans", var(--font-ui, sans-serif);
+  font-family: "QH Text", var(--font-ui, sans-serif);
   font-size: clamp(13px, 0.73vw, 14px);
   font-style: italic;
 }

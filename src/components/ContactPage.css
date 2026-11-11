@@ -40,7 +40,7 @@
   border-radius: 0;
   background: transparent;
   color: #000000;
-  font-family: "Nata Sans", var(--font-ui, "Inter", system-ui, sans-serif);
+  font-family: "QH Text", var(--font-ui, "QH UI", system-ui, sans-serif);
   font-size: clamp(15px, 0.94vw, 18px);
   letter-spacing: -0.02em;
   outline: none;
@@ -96,7 +96,7 @@
   border-radius: 0;
   background: #121212;
   color: #ffffff;
-  font-family: "Nata Sans", var(--font-ui, "Inter", system-ui, sans-serif);
+  font-family: "QH Text", var(--font-ui, "QH UI", system-ui, sans-serif);
   font-size: clamp(13px, 0.83vw, 16px);
   font-weight: 500;
   letter-spacing: 0.02em;
@@ -127,7 +127,7 @@
 .contact-form__status {
   margin: 14px 0 0;
   color: #555555;
-  font-family: "Nata Sans", var(--font-ui, "Inter", system-ui, sans-serif);
+  font-family: "QH Text", var(--font-ui, "QH UI", system-ui, sans-serif);
   font-size: clamp(13px, 0.83vw, 16px);
 }
 

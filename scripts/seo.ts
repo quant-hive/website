@@ -7,6 +7,7 @@
 //   dist/index.html          /            (the landing page)
 //   dist/about.html          /about       (vercel.json's cleanUrls serves it)
 //   dist/blog/<slug>.html    /blog/<slug>
+//   dist/news/<slug>.html    /news/<slug>
 //
 // The app itself is the same in every file; any other address still falls back
 // to index.html (vercel.json's rewrite).

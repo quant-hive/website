@@ -11,6 +11,7 @@ import CareersPage from "./components/CareersPage";
 import ContactPage from "./components/ContactPage";
 import LegalPage from "./components/LegalPage";
 import MaintenancePage from "./components/MaintenancePage";
+import NewsPage from "./components/NewsPage";
 import TeamPage from "./components/TeamPage";
 import EdgeMotifs from "./components/EdgeMotifs";
 import FlashProductPage from "./components/FlashProductPage";
@@ -187,6 +188,8 @@ function Site() {
         <ArticlePage />
       ) : page === "blog" ? (
         <BlogPage />
+      ) : page === "news" ? (
+        <NewsPage />
       ) : page === "team" ? (
         <TeamPage />
       ) : page === "contact" ? (

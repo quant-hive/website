@@ -67,7 +67,7 @@
   background: linear-gradient(180deg, rgba(22, 22, 22, 0.96), rgba(12, 12, 12, 0.96));
   box-shadow: 0 30px 80px -30px rgba(0, 0, 0, 0.9);
   color: #ffffff;
-  font-family: var(--font-ui, "Inter", system-ui, sans-serif);
+  font-family: var(--font-ui, "QH UI", system-ui, sans-serif);
 }
 
 .waitlist__head {
@@ -116,7 +116,7 @@
 
 .waitlist__title {
   margin: 0;
-  font-family: "Nata Sans", var(--font-ui);
+  font-family: "QH Text", var(--font-ui);
   font-size: 22px;
   font-weight: 500;
   letter-spacing: -0.02em;
@@ -142,7 +142,7 @@
 
 .waitlist__field > span {
   color: rgba(255, 255, 255, 0.5);
-  font-family: "Nata Sans", var(--font-ui);
+  font-family: "QH Text", var(--font-ui);
   font-size: 10.5px;
   font-weight: 500;
   letter-spacing: 0.2em;
@@ -211,7 +211,7 @@
 
 .waitlist__welcome-title {
   margin: 0;
-  font-family: "PP Pangaia", var(--font-display, serif);
+  font-family: "QH Display", var(--font-display, serif);
   font-size: clamp(26px, 3vw, 38px);
   font-weight: 500;
   letter-spacing: -0.02em;
@@ -223,7 +223,7 @@
   max-width: 30em;
   margin: 0;
   color: rgba(255, 255, 255, 0.6);
-  font-family: "Nata Sans", var(--font-ui);
+  font-family: "QH Text", var(--font-ui);
   font-size: 13px;
   letter-spacing: 0.02em;
   line-height: 1.6;
@@ -263,7 +263,7 @@
   box-shadow: 0 10px 28px -12px rgba(0, 0, 0, 0.9);
   color: #d6d6d6;
   cursor: pointer;
-  font-family: "Nata Sans", var(--font-ui);
+  font-family: "QH Text", var(--font-ui);
   font-size: 12.5px;
   font-weight: 500;
   letter-spacing: 0.2em;

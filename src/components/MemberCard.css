@@ -29,7 +29,7 @@
   position: relative;
   aspect-ratio: 85.6 / 54;
   color: var(--ink);
-  font-family: "Nata Sans", var(--font-ui, "Inter", system-ui, sans-serif);
+  font-family: "QH Text", var(--font-ui, "QH UI", system-ui, sans-serif);
   text-align: left;
   transform: rotateX(var(--rx)) rotateY(var(--ry));
   transition: transform 700ms cubic-bezier(0.22, 1, 0.36, 1);

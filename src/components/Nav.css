@@ -21,7 +21,7 @@
   z-index: 50;
   pointer-events: none;
   box-shadow: none !important;
-  font-family: var(--font-ui, "Inter", system-ui, sans-serif);
+  font-family: var(--font-ui, "QH UI", system-ui, sans-serif);
 }
 
 /* --- The bar: solid, full width, directly under the announcement bar --------- */
@@ -204,7 +204,7 @@
 }
 
 .nav__link {
-  font-family: var(--font-ui, "Inter", system-ui, sans-serif);
+  font-family: var(--font-ui, "QH UI", system-ui, sans-serif);
   /* Title case as written in Nav.tsx; a px up from the old all-caps size, since
      lowercase sets visibly smaller. */
   font-size: 13px;
