@@ -30,12 +30,13 @@ const ORIGINAL_ITEMS = [
 ];
 
 // The bar's and menu's labels for the site's plain pages.
-const PLAIN_PAGES: Record<string, "about" | "team" | "contact" | "blog" | "careers" | undefined> = {
+const PLAIN_PAGES: Record<string, "about" | "team" | "contact" | "blog" | "careers" | "news" | undefined> = {
   About: "about",
   Team: "team",
   Contact: "contact",
   Blog: "blog",
   Careers: "careers",
+  News: "news",
 };
 
 // The drawer's resources column (its own column on wider screens; on phones its
@@ -62,6 +63,18 @@ const RESOURCE_ITEMS = [
         <rect x="3.5" y="7.5" width="17" height="12" rx="1.5" />
         <path d="M9 7.5V5.5a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2" />
         <path d="M3.5 12.5h17" />
+      </LineIcon>
+    ),
+  },
+  {
+    title: "News",
+    blurb: "Events, launches and milestones.",
+    // A folded newspaper.
+    icon: (
+      <LineIcon>
+        <path d="M5 4.5h12v15H6.5A1.5 1.5 0 0 1 5 18Z" />
+        <path d="M17 8.5h2.5V18a1.5 1.5 0 0 1-3 0" />
+        <path d="M8 8h6M8 11.5h6M8 15h4" />
       </LineIcon>
     ),
   },
@@ -154,7 +167,7 @@ export default function Nav({
   onProductSelect?: () => void;
   /** Opens the About page. */
   /** Opens one of the site's plain pages (About, Team, Contact). */
-  onPageSelect?: (page: "about" | "team" | "contact" | "blog" | "careers") => void;
+  onPageSelect?: (page: "about" | "team" | "contact" | "blog" | "careers" | "news") => void;
   /** The page showing, for the bar's tone over Flash's dark hero. */
   page?: string;
 }) {

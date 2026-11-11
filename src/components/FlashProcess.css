@@ -7,7 +7,7 @@
   position: relative;
   padding: clamp(72px, 8.4vw, 168px) clamp(16px, 6.6vw, 128px) clamp(64px, 6vw, 120px);
   background: #ffffff;
-  font-family: var(--font-ui, "Inter", system-ui, sans-serif);
+  font-family: var(--font-ui, "QH UI", system-ui, sans-serif);
 }
 
 /* ---------- Headline ---------- */

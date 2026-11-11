@@ -1,0 +1,377 @@
+/* The News page (NewsPage.tsx; frame 96:1039), on the About page's column
+   (AboutPage.css), in the frame's measures against its 810 column (--u):
+
+   - the featured card 62 under the head: 810 × 270, a 0.5 #2576b9 rule round
+     it, each corner marked by three 12 squares (the corner's #2576b9, the two
+     beside it #34559b);
+     19 in, "Event Announcement" 12 #606060, the title 25/32 (344 wide), the
+     summary 16/19 #606060 (288 wide), each 12 under the last; the place and
+     date 12/19 #606060 along its foot, the date 234 in; on the right, 39 in, a
+     320 × 198 #fbfbfb panel ruled #e9e9e9: at its top left AIoT Taiwan's
+     marks (a 20 mark, the name in Inter Medium 17, its line 6.45 under it), a
+     71-wide #34559b rule, TAITRONICS' (129.6 × 27); Mexico Business News' at
+     its foot (104 × 54); on the right Taipei in a diamond (a 150 square, 10
+     round, turned 45°), ringed by a 180 one (20 round, #4568a1), both run off
+     the panel's edges;
+   - 51 under it, two notes in Nata Sans Medium 15.5 #959595, 364 and 382 wide,
+     72 apart with a 49-tall #959595 hairline centred between;
+   - 51 under them, the items three across, 240 wide and 45 apart, 259-tall
+     #e3e3e3 hairlines between: a 240 × 120 picture (#f8f8f8, a faint lattice,
+     the #ebebeb motif at its centre), the title 16/20 18 under it, the place and
+     date 12/18 along the item's foot (261 tall); rows 52 apart, a full-width
+     hairline 28 under each;
+   - the small grey motif to close.
+
+   Host Grotesk, black, unless noted. On a phone, the card's panel sits over its
+   text (as the Blog's featured image does) and the notes and items stack. */
+
+.news-page {
+  --u: calc(var(--col) / 812); /* one frame px (the column is 812; its blocks 810) */
+  --ink-2: #606060;
+  --grey: #959595;
+  /* The card's rule, 0.5 #2576b9: half a pixel can't be drawn on a 1× screen, so
+     there it's a pixel at half strength (how the frame renders it). */
+  --bw: 1px;
+  --rule-blue: rgb(37 118 185 / 0.5);
+  --blue: #2576b9;
+  --blue-2: #34559b;
+  --row-gap: calc(var(--u) * 52);
+}
+
+.news-page .about-page__title {
+  letter-spacing: -0.01em;
+}
+
+.news-page__featured,
+.news-page__notes,
+.news-page__list {
+  width: calc(var(--u) * 810);
+  animation: about-page-in 900ms cubic-bezier(0.22, 1, 0.36, 1) 220ms backwards;
+}
+
+.news-page__notes { animation-delay: 300ms; }
+.news-page__list { animation-delay: 380ms; }
+
+.news-page__featured,
+.news-page__list {
+  font-family: "QH Sans", var(--font-ui, "QH UI", system-ui, sans-serif);
+  font-weight: 400;
+  letter-spacing: -0.03em;
+}
+
+/* --- Featured card ----------------------------------------------------------------- */
+
+.news-page__featured {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) calc(var(--u) * 320);
+  gap: calc(var(--u) * 40);
+  min-height: max(220px, calc(var(--u) * 270));
+  margin-top: clamp(32px, 3.39vw, 65px); /* 62 under the frame's title box, taller than the head's */
+  padding: calc(var(--u) * 19 - var(--bw)) calc(var(--u) * 39 - var(--bw)) calc(var(--u) * 21 - var(--bw)) calc(var(--u) * 24 - var(--bw));
+  border: var(--bw) solid var(--rule-blue);
+}
+
+.news-page__featured-text {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+@media (min-resolution: 2dppx) {
+  .news-page {
+    --bw: 0.5px;
+    --rule-blue: var(--blue);
+  }
+}
+
+/* The corner marks: in each corner the square on the corner, then one beside it
+   either way. One layer per square, over the rule. */
+.news-page__featured::before {
+  --sq: max(6px, calc(var(--u) * 12));
+  --a: linear-gradient(var(--blue) 0 0);
+  --b: linear-gradient(var(--blue-2) 0 0);
+
+  position: absolute;
+  inset: calc(var(--bw) * -1);
+  z-index: 1;
+  background-image: var(--a), var(--b), var(--b), var(--a), var(--b), var(--b), var(--a), var(--b), var(--b), var(--a), var(--b), var(--b);
+  background-position:
+    left 0 top 0, left var(--sq) top 0, left 0 top var(--sq),
+    right 0 top 0, right var(--sq) top 0, right 0 top var(--sq),
+    left 0 bottom 0, left var(--sq) bottom 0, left 0 bottom var(--sq),
+    right 0 bottom 0, right var(--sq) bottom 0, right 0 bottom var(--sq);
+  background-repeat: no-repeat;
+  background-size: var(--sq) var(--sq);
+  content: "";
+  pointer-events: none;
+}
+
+.news-page__label,
+.news-page__summary,
+.news-page__featured-meta {
+  color: var(--ink-2);
+}
+
+.news-page__label {
+  margin: 0;
+  font-size: max(11px, calc(var(--u) * 12));
+  line-height: 1.33;
+}
+
+.news-page__featured-title {
+  max-width: max(13.76em, calc(var(--u) * 344)); /* 344 at 25 */
+  margin: calc(var(--u) * 12) 0 0;
+  font-size: max(20px, calc(var(--u) * 25));
+  font-weight: 400;
+  letter-spacing: -0.03em;
+  line-height: 1.28;
+}
+
+.news-page__summary {
+  max-width: max(18em, calc(var(--u) * 288)); /* 288 at 16 */
+  margin: calc(var(--u) * 12) 0 0;
+  font-size: max(14px, calc(var(--u) * 16));
+  line-height: 1.19;
+}
+
+.news-page__featured-meta {
+  display: grid;
+  grid-template-columns: max(9em, calc(var(--u) * 234)) auto;
+  justify-content: start;
+  margin: auto 0 0;
+  padding-top: 20px;
+  font-size: max(11px, calc(var(--u) * 12));
+  line-height: 1.58;
+}
+
+/* The event's art on a panel, 320 × 198, centred down the card's right
+   (36 in from its top and foot, 39 from its right): TaitronicsArt.tsx. */
+.news-page__panel {
+  align-self: center;
+  margin-top: calc(var(--u) * 2); /* centred between the card's 19 and 21 */
+  aspect-ratio: 320 / 198;
+}
+
+/* --- Opening an item ------------------------------------------------------------------ */
+
+/* The title's link covers its whole card (the card is its containing block). */
+.news-page__link {
+  color: inherit;
+  text-decoration: none;
+}
+
+.news-page__link::after {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  content: "";
+}
+
+.news-page__link:focus-visible {
+  outline: none;
+}
+
+.news-page__link:focus-visible::after {
+  outline: 1px solid #111111;
+  outline-offset: 4px;
+}
+
+.news-page__featured:has(.news-page__link:hover) .news-page__link,
+.news-page__item:has(.news-page__link:hover) .news-page__link {
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+}
+
+.news-page__panel,
+.news-page__thumb {
+  transition: opacity 200ms ease;
+}
+
+.news-page__featured:has(.news-page__link:hover) .news-page__panel,
+.news-page__item:has(.news-page__link:hover) .news-page__thumb {
+  opacity: 0.85;
+}
+
+/* --- The two notes ---------------------------------------------------------------- */
+
+/* The frame's notes run 8 past the column's 810 (364 + 72 + 382). */
+.news-page__notes {
+  display: grid;
+  grid-template-columns: minmax(0, 364fr) calc(var(--u) * 72) minmax(0, 382fr);
+  width: calc(var(--u) * 818);
+  margin-top: clamp(28px, 2.66vw, 51px);
+}
+
+.news-page__notes p {
+  margin: 0;
+  color: var(--grey);
+  font-family: "QH Text", var(--font-ui, sans-serif);
+  font-size: clamp(14px, 0.8073vw, 15.5px);
+  font-weight: 500;
+  letter-spacing: -0.05em;
+  line-height: 1.29;
+  text-wrap: pretty;
+}
+
+/* As tall as the notes beside it, 7 in from their top and 4 from their foot. */
+.news-page__divider {
+  align-self: stretch;
+  width: 1px;
+  margin: 0.45em 0 0.26em;
+  justify-self: center;
+  background: var(--grey);
+  font-size: clamp(14px, 0.8073vw, 15.5px);
+}
+
+/* --- The items ------------------------------------------------------------------- */
+
+.news-page__list {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--row-gap) calc(var(--u) * 45);
+  margin: clamp(28px, 2.66vw, 51px) 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.news-page__item {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: calc(var(--u) * 285); /* the frame's 261, its picture 24 taller */
+}
+
+/* The hairline before each item but a row's first, centred in the gap. */
+.news-page__item:not(:nth-child(3n + 1))::before {
+  position: absolute;
+  top: 0;
+  left: calc(var(--u) * -22.5);
+  width: 1px;
+  height: calc(100% - var(--u) * 2);
+  background: var(--rule);
+  content: "";
+}
+
+/* The full-width hairline over each row but the first, 28 under the row above:
+   each item draws its stretch, out to the middle of the gaps either side. */
+.news-page__item:nth-child(n + 4)::after {
+  position: absolute;
+  top: calc(var(--row-gap) * -24 / 52);
+  right: calc(var(--u) * -22.5);
+  left: calc(var(--u) * -22.5);
+  height: 1px;
+  background: var(--rule);
+  content: "";
+}
+
+.news-page__item:nth-child(3n + 1)::after { left: 0; }
+.news-page__item:nth-child(3n)::after { right: 0; }
+
+/* A picture to come: the frame's own (exported at 4×), a faint lattice round the
+   motif on a pale panel. A fifth taller than the frame's 240 × 120. */
+.news-page__thumb {
+  position: relative;
+  display: block;
+  aspect-ratio: 240 / 144;
+  overflow: hidden;
+  background: #f8f8f8 url("../assets/images/news/card-placeholder.png") 50% 50% / cover no-repeat;
+}
+
+/* News still to come: its title and meta a shade quieter. */
+.news-page__item--soon .news-page__title {
+  color: #606060;
+}
+
+.news-page__item--soon .news-page__meta {
+  color: #8a8a8a;
+}
+
+/* An item's own picture, once it has one, over the placeholder (only a plain
+   picture: art brings its own). */
+.news-page__thumb > img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.news-page__title {
+  margin: calc(var(--u) * 18) 0 0;
+  font-size: max(15px, calc(var(--u) * 16));
+  font-weight: 400;
+  letter-spacing: -0.03em;
+  line-height: 1.25;
+}
+
+.news-page__meta {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  margin: auto 0 0;
+  padding-top: 16px;
+  font-size: max(11px, calc(var(--u) * 12));
+  line-height: 1.5;
+}
+
+/* --- Phones ---------------------------------------------------------------------------- */
+
+@media (max-width: 640px) {
+  /* The panel over the text, as the Blog's featured image is. */
+  .news-page__featured {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 28px;
+    padding: 22px 20px 24px;
+  }
+
+  .news-page__panel {
+    grid-row: 1;
+    margin-top: 0;
+  }
+
+  .news-page__notes {
+    grid-template-columns: minmax(0, 1fr);
+    row-gap: 14px;
+    width: auto;
+  }
+
+  .news-page__divider {
+    display: none;
+  }
+
+  .news-page__list {
+    grid-template-columns: minmax(0, 1fr);
+    row-gap: 49px;
+  }
+
+  .news-page__item {
+    min-height: 0;
+  }
+
+  .news-page__meta {
+    padding-top: 20px;
+  }
+
+  .news-page__item:not(:nth-child(3n + 1))::before {
+    display: none;
+  }
+
+  /* One to a row: a hairline over each but the first, across the column. */
+  .news-page__item:nth-child(n + 2)::after {
+    position: absolute;
+    top: -25px;
+    right: 0;
+    left: 0;
+    height: 1px;
+    background: var(--rule);
+    content: "";
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .news-page__featured,
+  .news-page__notes,
+  .news-page__list {
+    animation: none;
+  }
+}

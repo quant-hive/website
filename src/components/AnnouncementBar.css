@@ -15,13 +15,15 @@
   justify-content: center;
   padding: 6px 44px 6px 16px;
   z-index: 60;
-  font-family: var(--font-ui, "Inter", system-ui, -apple-system, sans-serif);
+  font-family: var(--font-ui, "QH UI", system-ui, -apple-system, sans-serif);
   color: #ffffff;
   transform: translateY(0);
   opacity: 1;
   transition:
     transform 0.32s cubic-bezier(0.4, 0, 0.2, 1),
-    opacity 0.28s ease;
+    opacity 0.28s ease,
+    background-color 0.5s ease,
+    border-color 0.5s ease;
   box-sizing: border-box;
 }
 
@@ -29,6 +31,30 @@
   transform: translateY(-100%);
   opacity: 0;
   pointer-events: none;
+}
+
+/* An article's link to its original (press coverage): a navy deepened from
+   the News page's blues (#2576b9, #34559b; NewsPage.css), turned to from the
+   black as the article opens. */
+.announcement-bar--notice {
+  background: #1e3a6d;
+  border-bottom-color: #1e3a6d;
+}
+
+/* Its words cross-fade when what it says changes (AnnouncementBar.tsx). */
+.announcement-bar__content {
+  transition: opacity 0.2s ease;
+}
+
+.announcement-bar__content--fading {
+  opacity: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .announcement-bar,
+  .announcement-bar__content {
+    transition: none;
+  }
 }
 
 .announcement-bar__content {

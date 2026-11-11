@@ -123,7 +123,7 @@
 .hero__headline {
   margin: 0;
   color: #000;
-  font-family: "PP Pangaia", var(--font-display);
+  font-family: "QH Display", var(--font-display);
   font-size: max(30px, calc(108 * var(--ref))); /* the frame's 70, enlarged ~54% */
   font-weight: 500;
   line-height: 1.0714; /* 75 / 70 */
@@ -136,8 +136,8 @@
 }
 
 .hero__glyph--pg { font-family: var(--font-wordmark); font-weight: 400; }
-.hero__glyph--hg { font-family: "Host Grotesk", var(--font-ui); font-weight: 400; }
-.hero__glyph--sg { font-family: "Schibsted Grotesk", var(--font-ui); font-weight: 500; }
+.hero__glyph--hg { font-family: "QH Sans", var(--font-ui); font-weight: 400; }
+.hero__glyph--sg { font-family: "QH Sans 4", var(--font-ui); font-weight: 500; }
 
 /* "At" is tracked in at -4.2px on 70px. */
 .hero__glyph[data-tight] { letter-spacing: -0.06em; }
@@ -188,7 +188,7 @@
   margin: 0;
   max-width: 100%;
   color: #000;
-  font-family: "Nata Sans", var(--font-ui, "Inter", system-ui, sans-serif);
+  font-family: "QH Text", var(--font-ui, "QH UI", system-ui, sans-serif);
   font-size: max(10.5px, calc(15.5 * var(--ref))); /* the frame's 16, trimmed slightly */
   font-weight: 500;
   letter-spacing: 0.2em;
@@ -868,7 +868,7 @@
   border-radius: 100px;
   box-shadow: 0 10px 28px -12px rgba(0, 0, 0, 0.9);
   color: #c7c7c7;
-  font-family: "Nata Sans", var(--font-ui, "Inter", system-ui, sans-serif);
+  font-family: "QH Text", var(--font-ui, "QH UI", system-ui, sans-serif);
   font-size: max(10px, calc(12.6 * var(--ref))); /* 0.9 × the frame's 14 */
   font-weight: 500;
   letter-spacing: 0.2em; /* 2.8 on 14 */

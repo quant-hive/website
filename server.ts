@@ -13,6 +13,7 @@ const FIGMA_CAPABILITIES_IMAGE_DIR = join(IMAGE_DIR, "figma-capabilities");
 const VIDEO_SHOT_IMAGE_DIR = join(IMAGE_DIR, "video-shot");
 const TEAM_IMAGE_DIR = join(IMAGE_DIR, "team");
 const VIDEO_DIR = join(import.meta.dir, "src/assets/videos");
+const WEB_FONT_DIR = join(import.meta.dir, "src/assets/fonts/web");
 
 // The video panel's download: rendered on demand (scripts/render-video.ts) and
 // reused while nothing it's made from has changed. Kept on globalThis so a hot
@@ -53,6 +54,9 @@ const server = Bun.serve({
     "/*": index,
     "/icons/:file": (req) =>
       new Response(Bun.file(join(ICON_DIR, safeName(req.params.file)))),
+    // The self-hosted web fonts (src/lib/webFonts.ts declares them).
+    "/fonts/:file": (req) =>
+      new Response(Bun.file(join(WEB_FONT_DIR, safeName(req.params.file)))),
     "/images/figma-solution/:file": (req) =>
       new Response(Bun.file(join(FIGMA_SOLUTION_IMAGE_DIR, safeName(req.params.file)))),
     "/images/figma-product/:file": (req) =>

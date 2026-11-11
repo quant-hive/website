@@ -85,7 +85,7 @@
 
 .flash-partners__exception span {
   color: #7ec6ee;
-  font-family: "Bebas Neue", var(--font-ui, "Inter", system-ui, sans-serif);
+  font-family: "QH Condensed", var(--font-ui, "QH UI", system-ui, sans-serif);
   font-size: calc(var(--unit) * 35 * var(--k, 1));
   line-height: 1;
   white-space: nowrap;

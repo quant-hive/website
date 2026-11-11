@@ -19,7 +19,7 @@ function CompanyLogo({ company }: { company: Company }) {
           y="21"
           textAnchor="middle"
           fill="#ffffff"
-          fontFamily="Inter, Arial, sans-serif"
+          fontFamily="'QH UI', Arial, sans-serif"
           fontSize="13"
           fontWeight="600"
         >

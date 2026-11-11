@@ -18,7 +18,7 @@ import "./About.css";
 const VIDEO_SRC: string | undefined = undefined;
 const VIDEO_POSTER: string | undefined = undefined;
 
-type Face = "ghost" | "schibsted" | "bricolage" | "hanken" | "host" | "power";
+type Face = "initial" | "sans4" | "sans3" | "sans2" | "sans" | "mark";
 
 /** A run of the heading set in one face; `soft` is the frame's lighter -0.48px
  *  tracking, `open` and `large` as in the section above (Capabilities.css). */
@@ -110,29 +110,29 @@ export default function About() {
           {/* Set as the section above's heading is: Host Grotesk and Bricolage,
               a Ghost capital, the odd Schibsted or Power Grotesk letter. */}
           <span className="about__title-line">
-            <F f="ghost">R</F>
-            <F f="schibsted">e</F>
-            <F f="bricolage">d</F>
-            <F f="schibsted">e</F>
-            <F f="power">f</F>
-            <F f="host">ining </F>
-            <F f="bricolage">The </F>
-            <F f="schibsted">F</F>
-            <F f="host">uture </F>
-            <F f="bricolage">O</F>
-            <F f="power">f </F>
-            <F f="schibsted">I</F>
-            <F f="host">nvestment </F>
-            <F f="bricolage">A</F>
-            <F f="host">n</F>
-            <F f="schibsted">a</F>
-            <F f="host">l</F>
-            <F f="schibsted" open>y</F>
-            <F f="bricolage" large>t</F>
-            <F f="host">i</F>
-            <F f="bricolage">c</F>
-            <F f="schibsted">s</F>
-            <F f="bricolage">,</F>
+            <F f="initial">R</F>
+            <F f="sans4">e</F>
+            <F f="sans3">d</F>
+            <F f="sans4">e</F>
+            <F f="mark">f</F>
+            <F f="sans">ining </F>
+            <F f="sans3">The </F>
+            <F f="sans4">F</F>
+            <F f="sans">uture </F>
+            <F f="sans3">O</F>
+            <F f="mark">f </F>
+            <F f="sans4">I</F>
+            <F f="sans">nvestment </F>
+            <F f="sans3">A</F>
+            <F f="sans">n</F>
+            <F f="sans4">a</F>
+            <F f="sans">l</F>
+            <F f="sans4" open>y</F>
+            <F f="sans3" large>t</F>
+            <F f="sans">i</F>
+            <F f="sans3">c</F>
+            <F f="sans4">s</F>
+            <F f="sans3">,</F>
           </span>{" "}
           <span className="about__title-line about__title-line--light">
             who we are <span className="about__amp">&amp;</span> what we’re solving

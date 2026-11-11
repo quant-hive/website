@@ -20,7 +20,7 @@
   width: 100%;
   padding: 0;
   color: var(--footer-text);
-  font-family: var(--font-ui, "Inter", system-ui, sans-serif);
+  font-family: var(--font-ui, "QH UI", system-ui, sans-serif);
 }
 
 .site-footer__panel {
@@ -165,8 +165,7 @@
   list-style: none;
 }
 
-.site-footer__column a,
-.site-footer__item {
+.site-footer__column a {
   color: var(--footer-text);
   font-size: clamp(14px, 1.1vw, 18px);
   font-weight: 500;
@@ -179,11 +178,6 @@
 
 .site-footer__column a:hover {
   opacity: 0.55;
-}
-
-/* Listed, not linked (the Certified column): a touch quieter. */
-.site-footer__item {
-  opacity: 0.7;
 }
 
 /* ---------- Legal row ---------- */

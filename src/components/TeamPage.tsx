@@ -16,7 +16,7 @@ import "./TeamPage.css";
 // `note`: a line under the role; several, and they take turns in a loop.
 // `strength`: a lighter engraving (0–1) for a photo that reads less clearly.
 const TEAM: { name: string; role: string; note?: string | string[]; photo?: string; strength?: number }[] = [
-  { name: "Harkishan S Baniya", role: "CEO & Founder", photo: "/images/team/harkishan.jpg", strength: 0.7 },
+  { name: "Harkishan S Baniya", role: "CEO & Co-Founder", photo: "/images/team/harkishan.jpg", strength: 0.7 },
   { name: "Neelesh Upadhaye", role: "Co-Founder", note: ["Ex Quant Head, Dolat Capital", "Professor, IIT Madras"], photo: "/images/team/neelesh.jpg", strength: 0.7 },
   { name: "Chirag S J", role: "Founding Member, SDE", photo: "/images/team/chirag.jpg" },
   { name: "Mahati", role: "Founding Member, Founder's Office Associate", photo: "/images/team/mahati.jpg" },

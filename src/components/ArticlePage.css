@@ -20,8 +20,28 @@
   --faint: #b3b3b3;
 }
 
-.article-page__fg { font-family: "Familjen Grotesk", var(--font-ui, sans-serif); font-weight: 500; }
-.article-page__sg { font-family: "Schibsted Grotesk", var(--font-ui, sans-serif); font-weight: 500; }
+.article-page__fg { font-family: "QH Sans 5", var(--font-ui, sans-serif); font-weight: 500; }
+.article-page__sg { font-family: "QH Sans 4", var(--font-ui, sans-serif); font-weight: 500; }
+
+/* The Q of QuantHive's logo (its ring and tail, cut from the lockup), in place
+   of a typed one: as tall against the title's capitals as it is against the
+   logo's H (0.971 of PP Pangaia's 0.703em cap height), on the baseline (an
+   inline-block that clips its content sits on its bottom edge), Pangaia's own
+   Q's spacing before it and the logo's after: its tail as near the next letter
+   as the logo's is to its u (0.036 of the cap height), less the 0.06em the
+   Bricolage u leaves at its left. The letter stays in the text, unseen, so the
+   title still reads and copies as "Q…". */
+.article-page__lq {
+  display: inline-block;
+  width: 0.742em;
+  height: 0.683em;
+  margin: 0 -0.035em 0 0.031em;
+  overflow: hidden;
+  background: currentColor;
+  -webkit-text-fill-color: transparent;
+  -webkit-mask: url("../assets/icons/logo-q.svg") 0 0 / 100% 100% no-repeat;
+  mask: url("../assets/icons/logo-q.svg") 0 0 / 100% 100% no-repeat;
+}
 
 .article-page .about-page__title {
   letter-spacing: -0.01em;
@@ -33,7 +53,7 @@
 .article-page__subtitle {
   margin: clamp(20px, 1.6vw, 30px) 0 0;
   color: var(--ink-2);
-  font-family: "Nata Sans", var(--font-ui, sans-serif);
+  font-family: "QH Text", var(--font-ui, sans-serif);
   font-size: clamp(18px, 1.2vw, 23px);
   font-weight: 500;
   letter-spacing: -0.01em;
@@ -46,7 +66,7 @@
   gap: clamp(10px, 0.8vw, 14px);
   margin: clamp(8px, 0.6vw, 12px) 0 0;
   color: var(--muted);
-  font-family: "Nata Sans", var(--font-ui, sans-serif);
+  font-family: "QH Text", var(--font-ui, sans-serif);
   font-size: clamp(13px, 0.83vw, 16px);
   font-weight: 500;
   letter-spacing: -0.01em;
@@ -91,7 +111,7 @@
   translate: -50% -50%;
 }
 
-.article-page__cover img {
+.article-page__cover > img {
   display: block;
   width: 100%;
   height: 100%;
@@ -103,7 +123,7 @@
 .article-page__list,
 .article-page__refs,
 .article-page__table {
-  font-family: "Nata Sans", var(--font-ui, sans-serif);
+  font-family: "QH Text", var(--font-ui, sans-serif);
   font-size: clamp(15px, 0.86vw, 16.5px);
   font-weight: 500;
   letter-spacing: -0.01em;
@@ -133,7 +153,7 @@
 
 .article-page__h2 {
   margin-top: clamp(40px, 2.6vw, 52px) !important;
-  font-family: "Nata Sans", var(--font-ui, sans-serif);
+  font-family: "QH Text", var(--font-ui, sans-serif);
   font-size: clamp(20px, 1.15vw, 22px);
   font-weight: 500;
   letter-spacing: -0.01em;
@@ -143,7 +163,7 @@
 
 .article-page__h3 {
   margin-top: clamp(24px, 1.6vw, 30px) !important;
-  font-family: "Nata Sans", var(--font-ui, sans-serif);
+  font-family: "QH Text", var(--font-ui, sans-serif);
   font-size: clamp(16.5px, 0.94vw, 18px);
   font-weight: 600;
   letter-spacing: -0.01em;
@@ -161,7 +181,7 @@
 
 .article-page__quote p {
   margin: 0;
-  font-family: "PP Pangaia", var(--font-display, serif);
+  font-family: "QH Display", var(--font-display, serif);
   font-size: clamp(19px, 1.25vw, 24px);
   font-weight: 500;
   letter-spacing: -0.01em;
@@ -188,7 +208,7 @@
 
 .article-page__source {
   color: var(--muted);
-  font-family: "Nata Sans", var(--font-ui, sans-serif);
+  font-family: "QH Text", var(--font-ui, sans-serif);
   font-size: clamp(12.5px, 0.73vw, 14px);
   font-style: italic;
   line-height: 1.5;
@@ -242,7 +262,7 @@
   border-radius: 0;
   background: #121212;
   color: #ffffff;
-  font-family: "Nata Sans", var(--font-ui, sans-serif);
+  font-family: "QH Text", var(--font-ui, sans-serif);
   font-size: 14px;
   font-weight: 500;
   letter-spacing: 0.02em;
@@ -265,6 +285,50 @@
   fill: none;
   stroke: currentColor;
   stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* The original an article is drawn from: a rule, then a link out to it. */
+.article-page__reference {
+  margin: clamp(40px, 2.6vw, 52px) 0 0;
+  padding-top: clamp(18px, 1.3vw, 24px);
+  border-top: 1px solid var(--rule);
+  color: var(--muted);
+  font-family: "QH Text", var(--font-ui, sans-serif);
+  font-size: clamp(13.5px, 0.78vw, 15px);
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  line-height: 1.5;
+}
+
+.article-page__reference a {
+  color: #111111;
+  text-decoration: underline;
+  text-decoration-color: #c9c9c9;
+  text-underline-offset: 0.2em;
+  transition: text-decoration-color 200ms ease;
+}
+
+.article-page__reference a:hover {
+  text-decoration-color: currentColor;
+}
+
+.article-page__reference a:focus-visible {
+  outline: 1px solid #111111;
+  outline-offset: 3px;
+}
+
+/* Inline, so on a narrow screen it stays beside the link's last word. */
+.article-page__reference svg {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  margin-left: 7px;
+  vertical-align: 0.05em;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.4;
   stroke-linecap: round;
   stroke-linejoin: round;
 }
@@ -320,7 +384,7 @@
 .article-page__contents-title {
   margin: 0 0 12px;
   color: var(--faint);
-  font-family: "Nata Sans", var(--font-ui, sans-serif);
+  font-family: "QH Text", var(--font-ui, sans-serif);
   font-size: clamp(19px, 1.2vw, 23px);
   font-weight: 500;
   letter-spacing: -0.01em;
@@ -343,7 +407,7 @@
   border-bottom: 1px solid #d9d9d9;
   border-radius: 0;
   color: var(--faint);
-  font-family: "Nata Sans", var(--font-ui, sans-serif);
+  font-family: "QH Text", var(--font-ui, sans-serif);
   font-size: 14px;
   font-weight: 500;
   letter-spacing: -0.01em;
