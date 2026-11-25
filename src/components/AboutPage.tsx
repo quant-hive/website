@@ -64,7 +64,8 @@ function IncubationCellSeal() {
 // Each partner's logo, drawn at a matched visual weight (--w as a share of its
 // compartment's width).
 // `o`: a little more opacity for a fine-lined seal, which fades out sooner.
-const PARTNERS: { name: string; w: number; o?: number; logo: ReactNode }[] = [
+// `href`: where the logo leads, for a partner that asks for a link back.
+const PARTNERS: { name: string; w: number; o?: number; href?: string; logo: ReactNode }[] = [
   { name: "Citi", w: 0.26, logo: <img src={`${LOGO}/logo-citi.svg`} alt="" /> },
   { name: "Google", w: 0.456, logo: <img src={`${LOGO}/logo-google.svg`} alt="" /> },
   { name: "AWS", w: 0.24, logo: <img src={`${LOGO}/logo-aws.svg`} alt="" /> },
@@ -92,6 +93,12 @@ const PARTNERS: { name: string; w: number; o?: number; logo: ReactNode }[] = [
   { name: "nasscom", w: 0.46, logo: <img src={`${LOGO}/logo-nasscom.svg`} alt="" /> },
   { name: "IIT Madras", w: 0.3, o: 0.55, logo: <img src={`${LOGO}/logo-iit-madras.svg`} alt="" /> },
   { name: "IITM Incubation Cell", w: 0.29, o: 0.55, logo: <IncubationCellSeal /> },
+  {
+    name: "ElevenLabs Grants",
+    w: 0.72, // a long wordmark (11 : 1): wider, to read at its neighbours' weight
+    href: "https://elevenlabs.io/startup-grants",
+    logo: <img src="https://eleven-public-cdn.elevenlabs.io/payloadcms/pwsc4vchsqt-ElevenLabsGrants.webp" alt="" />,
+  },
 ];
 // Rows are filled out with empty compartments, so the grid's lines stay whole:
 // on wider screens the heading takes the first of three columns; on phones it
@@ -232,9 +239,15 @@ export default function AboutPage() {
           <ul className="about-page__logos">
             {PARTNERS.map((partner) => (
               <li key={partner.name} className="about-page__logo" style={{ "--w": partner.w, "--o": partner.o } as CSSProperties} title={partner.name}>
-                <span className="about-page__logo-art" role="img" aria-label={partner.name}>
-                  {partner.logo}
-                </span>
+                {partner.href ? (
+                  <a className="about-page__logo-art" href={partner.href} target="_blank" rel="noopener noreferrer" aria-label={`${partner.name} (opens in a new tab)`}>
+                    {partner.logo}
+                  </a>
+                ) : (
+                  <span className="about-page__logo-art" role="img" aria-label={partner.name}>
+                    {partner.logo}
+                  </span>
+                )}
               </li>
             ))}
             {BLANKS.map((shows, index) => (

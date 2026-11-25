@@ -37,6 +37,8 @@ const LOGOS = [
   { src: "logo-seal-a.png", alt: "IIT Madras", w: 45, h: 45 },
   { src: "logo-seal-b.png", alt: "IITM Incubation Cell", w: 41.89, h: 41.89 },
   { src: "logo-intel.svg", alt: "Intel", w: 75, h: 29.57 },
+  // ElevenLabs' grants badge, from ElevenLabs' own CDN (as their embed gives it).
+  { src: "https://eleven-public-cdn.elevenlabs.io/payloadcms/pwsc4vchsqt-ElevenLabsGrants.webp", alt: "ElevenLabs Grants", w: 1496, h: 132 },
 ] as const;
 
 function Logos({ hidden = false }: { hidden?: boolean }) {
@@ -46,7 +48,7 @@ function Logos({ hidden = false }: { hidden?: boolean }) {
         const size = sized(logo.w, logo.h);
         return (
         <li key={logo.src} style={{ "--w": size.w, "--h": size.h } as CSSProperties}>
-          <img src={`/images/figma-product/${logo.src}`} alt={hidden ? "" : logo.alt} loading="lazy" draggable={false} />
+          <img src={logo.src.startsWith("https://") ? logo.src : `/images/figma-product/${logo.src}`} alt={hidden ? "" : logo.alt} loading="lazy" draggable={false} />
         </li>
         );
       })}

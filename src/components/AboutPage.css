@@ -325,9 +325,16 @@
     opacity 300ms ease;
 }
 
-.about-page__logo:hover .about-page__logo-art {
+.about-page__logo:hover .about-page__logo-art,
+a.about-page__logo-art:focus-visible {
   filter: none;
   opacity: 1;
+}
+
+/* A partner whose logo links back (ElevenLabs' grants). */
+a.about-page__logo-art:focus-visible {
+  outline: 1px solid #111111;
+  outline-offset: 8px;
 }
 
 .about-page__logo-art img,
