@@ -8,7 +8,8 @@
      role 14 black 23 to its right, its terms 11 #959595 in three columns (at 123,
      404 and 671), and "Apply Now" 12 with a dotted underline at the right;
    - the apply bar, 60 tall and black over the lattice, on the same columns: the
-     person, two #1c1c1c fields 180 × 25, and a white "Apply Now ↗";
+     person, two #1c1c1c fields 180 × 25, and a white "Next ↗" — then, at its
+     second step, the CV and phone in the same fields, "← Back" and "Submit ↗";
    - the end: two #e3e3e3 rules, the small grey motif between them.
 
    On a tablet the columns narrow; on a phone a row is the tile and the role over
@@ -256,6 +257,124 @@
   caret-color: #ffffff;
 }
 
+/* The two steps (CareersPage.tsx): their fields sit straight in the bar's
+   columns; the step not showing is hidden, its values kept. */
+.careers-page__step {
+  display: contents;
+}
+
+.careers-page__step[hidden] {
+  display: none;
+}
+
+.careers-page__step:not([hidden]) > * {
+  animation: careers-step-in 360ms cubic-bezier(0.22, 1, 0.36, 1) backwards;
+}
+
+.careers-page__step:not([hidden]) > :nth-child(2) { animation-delay: 40ms; }
+.careers-page__step:not([hidden]) > :nth-child(3) { animation-delay: 80ms; }
+
+@keyframes careers-step-in {
+  from {
+    opacity: 0;
+    translate: 8px 0;
+  }
+}
+
+/* The CV: the file input itself unseen but focusable; a face like the fields'. */
+.careers-page__file {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+}
+
+.careers-page__field--cv {
+  position: relative;
+  cursor: pointer;
+}
+
+.careers-page__file-face {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: min(100%, max(168px, calc(var(--u) * 216)));
+  height: clamp(25px, 1.35vw, 30px);
+  padding: 0 9px;
+  background: #1c1c1c;
+  color: #7a7a7a;
+  font-size: clamp(12px, 0.625vw, 14.5px);
+  letter-spacing: -0.03em;
+  transition: background-color 200ms ease, color 200ms ease;
+}
+
+.careers-page__file-face svg {
+  flex: none;
+  width: 13px;
+  height: 13px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.careers-page__file-name {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.careers-page__field--cv[data-filled] .careers-page__file-face {
+  color: #ffffff;
+}
+
+.careers-page__field--cv:hover .careers-page__file-face,
+.careers-page__file:focus-visible + .careers-page__file-face {
+  background: #262626;
+}
+
+/* Next, or Back and Submit: in the last column, where Apply Now was. */
+.careers-page__actions {
+  display: inline-flex;
+  align-items: center;
+  gap: clamp(14px, 1vw, 20px);
+  grid-column: 4;
+  justify-self: start;
+}
+
+.careers-page__back {
+  padding: 0 0 4px;
+  border: 0;
+  border-radius: 0;
+  background: none;
+  color: #9a9a9a;
+  cursor: pointer;
+  font: inherit;
+  font-size: clamp(12px, 0.625vw, 14.5px);
+  letter-spacing: -0.03em;
+  transition: color 200ms ease;
+}
+
+.careers-page__back::before {
+  content: "← ";
+}
+
+.careers-page__back:hover {
+  color: #ffffff;
+}
+
+.careers-page__back:focus-visible {
+  outline: 1px solid #ffffff;
+  outline-offset: 4px;
+}
+
+.careers-page__back:disabled {
+  cursor: default;
+  opacity: 0.6;
+}
+
 .careers-page__trap {
   position: absolute;
   left: -9999px;
@@ -343,7 +462,8 @@
     min-height: clamp(87px, 4.6vw, 106px);
   }
 
-  .careers-page__field input {
+  .careers-page__field input,
+  .careers-page__file-face {
     height: clamp(34px, 1.8vw, 40px);
     padding: 0 12px;
   }
@@ -448,26 +568,34 @@
     grid-column: 1 / -1;
   }
 
-  .careers-page__field--name { grid-row: 2; }
-  .careers-page__field--email { grid-row: 3; }
+  .careers-page__field--name,
+  .careers-page__field--cv { grid-row: 2; }
+  .careers-page__field--email,
+  .careers-page__field--phone { grid-row: 3; }
 
   .careers-page__field {
     padding-right: 0;
   }
 
-  .careers-page__field input {
+  .careers-page__field input,
+  .careers-page__file-face {
     width: 100%;
     height: 46px;
     padding: 0 14px;
     font-size: 16px; /* under 16, iOS zooms in on focus */
   }
 
-  .careers-page__send {
+  /* Next, or Back and Submit, level with the person at the right. */
+  .careers-page__actions {
     grid-column: 2;
     grid-row: 1;
     justify-self: end;
     align-self: center;
     margin: 0 0 6px;
+  }
+
+  .careers-page__send,
+  .careers-page__back {
     font-size: 14px;
   }
 
@@ -509,5 +637,9 @@
 
   .careers-page__drawer {
     transition: none;
+  }
+
+  .careers-page__step:not([hidden]) > * {
+    animation: none;
   }
 }
